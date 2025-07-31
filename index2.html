@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>our happiness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="style2.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap');
+
+    .center-quote {
+      text-align: center;
+      font-style: italic;
+      font-weight: bold;
+      margin: 40px auto;
+      max-width: 90%;
+      font-size: 1.3em;
+      color: pink;
+      z-index: 3;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .text-container {
+      max-width: 95%;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .details p {
+      position: static;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      font-size: 1.1em;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: white;
+      word-break: break-word;
+    }
+
+    #audioButton {
+      background-color: rgb(0, 0, 0);
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #audioButton:hover {
+      opacity: 1;
+    }
+
+    #audioButton img {
+      position: static !important;
+      width: 80px;
+      height: 80px;
+      filter: invert(79%) sepia(29%) saturate(7474%) hue-rotate(291deg) brightness(102%) contrast(101%);
+    }
+
+    .details p {
+      visibility: hidden;
+    }
+
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Georgia', serif;
+      font-size: calc(10px + 0.4vw);
+      background-color: black;
+      color: white;
+    }
+
+    .text-container {
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+
+    @media (max-width: 600px) {
+      .text-container {
+        padding: 15px;
+        font-size: 16px;
+      }
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div id="audioButtonContainer">
+    <button id="audioButton">
+      <img src="https://cdn-icons-png.flaticon.com/512/2589/2589175.png" alt="Play">
+    </button>
+  </div>
+
+  <audio id="audioPlayer" src="bgm.mp3"></audio>
+
+  <div class="background-container">
+    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png" alt="">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="details">
+      <div class="text-container">
+        <div class="center-quote">KAMU</div>
+        <p>terbuat dari apa dirimu?, hal baik apa yang dilakukan ayah dan ibumu sebelum kau lahir?</p>
+        <p>apa mereka pernah menyumbangkan ribuan permata berharga kepada yang tidak mampu?</p>
+        <p>apa mereka pernah menciptakan lagu yang membuat orang-orang tidur nyenyak?</p>
+        <p>apa tuhan tengah tersenyum  ketika menciptakanmu?, kau terlalu indah jika hanya disebut sebagai manusia biasa.</p>
+        <p>sosokmu terlalu indah jika dipandang dengan telanjang mata, mungkin malaikat pernah memujimu.</p>
+        <p>bukan hanya indah, tetapi aku jatuh cinta jika segalanya tentangmu.</p>
+        <p>dari banyaknya kesempatan yang pernah semesta berikan,</p>
+        <p>senang karena bisa menemukanmu di bumi yang luas ini.</p>
+        <p>love you, ayesha feya aninditria.</p>
+        <p>-raditia candra</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    const paragraphs = document.querySelectorAll('.text-container p');
+    const typingSpeed = 50; // waktu antar huruf (ms)
+
+    async function typeParagraph(p, delay = 0) {
+      const text = p.textContent;
+      p.textContent = '';
+      p.style.visibility = 'visible';
+
+      for (let i = 0; i < text.length; i++) {
+        p.textContent += text[i];
+        await new Promise(resolve => setTimeout(resolve, typingSpeed));
+      }
+    }
+
+    async function typeAll() {
+      for (let p of paragraphs) {
+        await typeParagraph(p);
+      }
+    }
+
+    typeAll(); // jalankan efek ketik semua paragraf berurutan
+  </script>
+
+
+
+  <script>
+    const button = document.getElementById('audioButton');
+    const audio = document.getElementById('audioPlayer');
+
+    button.addEventListener('click', () => {
+      audio.play();
+      button.style.opacity = '0';
+    });
+  </script>
+</body>
+</html>
